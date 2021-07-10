@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210710143136 extends AbstractMigration
+final class Version20210710144145 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -30,7 +30,6 @@ final class Version20210710143136 extends AbstractMigration
         $this->addSql('CREATE TABLE commentaires (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, articles_id INTEGER DEFAULT NULL, contenu CLOB NOT NULL, email VARCHAR(255) DEFAULT NULL, pseudo VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
         )');
         $this->addSql('CREATE INDEX IDX_D9BEC0C41EBAF6CC ON commentaires (articles_id)');
-        $this->addSql('CREATE TABLE mots_cles (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, mot_cle VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL)');
     }
 
     public function down(Schema $schema): void
@@ -40,6 +39,5 @@ final class Version20210710143136 extends AbstractMigration
         $this->addSql('DROP TABLE articles_categories');
         $this->addSql('DROP TABLE articles_mots_cles');
         $this->addSql('DROP TABLE commentaires');
-        $this->addSql('DROP TABLE mots_cles');
     }
 }
