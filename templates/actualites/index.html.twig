@@ -3,18 +3,29 @@
 {% block title %}Hello ActualitesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+      <!-- Page Heading -->
+      <h1 class="my-4">Actualites a la une 
+        <small>Secondary Text</small>
+      </h1>
+{% for article in articles %}
+      <!-- Project One -->
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#">
+            <img class="img-fluid rounded mb-2 mb-md-0" src="https://via.placeholder.com/728x350" alt="">
+          </a>
+        </div>
+        <div class="col-md-8">
+          <h3>{{ article.titre }}</h3>
+          <p>{{ article.contenu |slice(0, 240) }}..</p>
+          {{ article.titre |slug }}
+          <a class="btn btn-primary" href="#">Continuer la lecture</a>
+        </div>
+      </div>
+      <!-- /.row -->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+      <hr>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/soufiane/Desktop/ITLEARNING/day02/blog/src/Controller/ActualitesController.php'|file_link(0) }}">src/Controller/ActualitesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/soufiane/Desktop/ITLEARNING/day02/blog/templates/actualites/index.html.twig'|file_link(0) }}">templates/actualites/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+    {{ knp_pagination_render(articles) }}
+    {% endblock %}
